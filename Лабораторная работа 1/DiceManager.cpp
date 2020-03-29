@@ -35,6 +35,13 @@ float DiceManager::getEProbability(size_t face)
 	return dropped[face] / testCount;
 }
 
+unsigned int DiceManager::getDropped(size_t face) 
+{
+	if (face >= dice->getFaceCount())
+		throw "Невозможно отобразить количество выпавших граней: выход за границы массива";
+	return dropped[face];
+}
+
 DiceManager::~DiceManager(void)
 {
 	delete[] dropped;
