@@ -14,13 +14,18 @@ Dice::Dice(size_t faceCount)
 	}
 }
 
-
 Dice::~Dice(void)
 {
 	delete[] faces;
 	delete[] faceProbabilities;
 }
 
-int Dice::throwDice() {
+int Dice::throwDice() 
+{
 	return floor(((double) rand()/RAND_MAX) * faceCount) + 1;
+}
+
+size_t Dice::getFaceCount() 
+{
+	return faceCount;
 }

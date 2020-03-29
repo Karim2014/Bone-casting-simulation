@@ -9,6 +9,7 @@ public:
 	Dice(size_t, double*);
 	int throwDice();
 	void setProbability(size_t, double);
+	size_t getFaceCount();
 	~Dice(void);
 	//
 };
