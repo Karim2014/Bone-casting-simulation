@@ -4,8 +4,8 @@ private:
 	int* faces;
 	float* faceProbabilities;
 public:
-	Dice(void);
-	Dice(double*);
+	Dice(size_t);
+	Dice(size_t, double*);
 	void setProbability(size_t, double);
 	~Dice(void);
 };
