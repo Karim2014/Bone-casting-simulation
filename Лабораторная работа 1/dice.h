@@ -8,5 +8,6 @@ public:
 	Dice(size_t, double*);
 	void setProbability(size_t, double);
 	~Dice(void);
+	//
 };
 
