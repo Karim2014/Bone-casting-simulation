@@ -9,7 +9,9 @@
 
 #include <stdio.h>
 #include <tchar.h>
-
+#include <math.h>
+#include <time.h>
+#include <random>
 
 
 // TODO: Установите здесь ссылки на дополнительные заголовки, требующиеся для программы
