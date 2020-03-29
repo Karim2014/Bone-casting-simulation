@@ -10,5 +10,6 @@ public:
 	int throwDice();
 	void setProbability(size_t, double);
 	~Dice(void);
+	//
 };
 
