@@ -32,7 +32,7 @@ float DiceManager::getEProbability(size_t face)
 {
 	if (face >= dice->getFaceCount())
 		throw "Невозможно расчитать теоретическую вероятность: выход за границы массива";
-	return dropped[face] / testCount;
+	return (float) dropped[face] / testCount;
 }
 
 unsigned int DiceManager::getDropped(size_t face) 

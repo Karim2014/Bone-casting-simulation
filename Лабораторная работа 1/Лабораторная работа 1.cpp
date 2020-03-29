@@ -15,7 +15,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	setlocale(LC_ALL, "Rus");
 
 	Dice* dice = new Dice(6);
-	DiceManager* diceMgr = new DiceManager(dice, 10000);
+	DiceManager* diceMgr = new DiceManager(dice, 150000);
 
 	//diceMgr->setDisplayFunc(display);
 	diceMgr->testDice();

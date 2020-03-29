@@ -13,6 +13,7 @@
 #include <time.h>
 #include <random>
 #include <locale.h>
+#include <iostream>
 
 
 // TODO: Установите здесь ссылки на дополнительные заголовки, требующиеся для программы
