@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 class Dice {
 private:
 	size_t faceCount;

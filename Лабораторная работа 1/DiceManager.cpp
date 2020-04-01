@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+п»ї#include "StdAfx.h"
 #include "DiceManager.h"
 
 DiceManager::DiceManager(Dice* dice, unsigned int testCount)
@@ -18,7 +18,7 @@ void DiceManager::setDisplayFunc(void (*callback)(int))
 
 void DiceManager::testDice() 
 {
-	int face; // выпавшая грань
+	int face; // РІС‹РїР°РІС€Р°СЏ РіСЂР°РЅСЊ
 	for (int i = 0; i < this->testCount; i++) 
 	{
 		face = this->dice->throwDice();
@@ -31,14 +31,14 @@ void DiceManager::testDice()
 float DiceManager::getEProbability(size_t face)
 {
 	if (face >= dice->getFaceCount())
-		throw "Невозможно расчитать теоретическую вероятность: выход за границы массива";
+		throw "РќРµРІРѕР·РјРѕР¶РЅРѕ СЂР°СЃС‡РёС‚Р°С‚СЊ С‚РµРѕСЂРµС‚РёС‡РµСЃРєСѓСЋ РІРµСЂРѕСЏС‚РЅРѕСЃС‚СЊ: РІС‹С…РѕРґ Р·Р° РіСЂР°РЅРёС†С‹ РјР°СЃСЃРёРІР°";
 	return (float) dropped[face] / testCount;
 }
 
 float DiceManager::getDropped(size_t face) 
 {
 	if (face >= dice->getFaceCount())
-		throw "Невозможно отобразить количество выпавших граней: выход за границы массива";
+		throw "РќРµРІРѕР·РјРѕР¶РЅРѕ РѕС‚РѕР±СЂР°Р·РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ РІС‹РїР°РІС€РёС… РіСЂР°РЅРµР№: РІС‹С…РѕРґ Р·Р° РіСЂР°РЅРёС†С‹ РјР°СЃСЃРёРІР°";
 	return dropped[face];
 }
 

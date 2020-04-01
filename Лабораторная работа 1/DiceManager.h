@@ -1,20 +1,20 @@
-#pragma once
+п»ї#pragma once
 #include "dice.h"
 
 class DiceManager
 {
 private:
-	unsigned int testCount; // количество испытаний
-	Dice* dice; // сслыка на кость
+	unsigned int testCount; // РєРѕР»РёС‡РµСЃС‚РІРѕ РёСЃРїС‹С‚Р°РЅРёР№
+	Dice* dice; // СЃСЃР»С‹РєР° РЅР° РєРѕСЃС‚СЊ
 	unsigned int* dropped;
 	void (*callback)(int);
 public:
 	DiceManager(Dice*, unsigned int);
-	void setDisplayFunc(void (*callback)(int)); //  функция обратного вызова
+	void setDisplayFunc(void (*callback)(int)); //  С„СѓРЅРєС†РёСЏ РѕР±СЂР°С‚РЅРѕРіРѕ РІС‹Р·РѕРІР°
 	void testDice();
 	float getDropped(size_t face);
 	float getExpectedDrop(size_t face) {return dice->getProbability(face) * testCount;} 
-	float getEProbability(size_t); // эмпирическая вероятность
+	float getEProbability(size_t); // СЌРјРїРёСЂРёС‡РµСЃРєР°СЏ РІРµСЂРѕСЏС‚РЅРѕСЃС‚СЊ
 	double pearson();
 	~DiceManager(void);
 };
