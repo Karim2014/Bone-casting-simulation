@@ -42,6 +42,15 @@ unsigned int DiceManager::getDropped(size_t face)
 	return dropped[face];
 }
 
+double DiceManager::pearson() 
+{
+	double sum = 0.0;
+	for (int i = 0; i < dice->getFaceCount(); i++) {
+		sum += pow((double) dropped[i] - getExpectedDrop(i), 2) / getExpectedDrop(i);
+	}
+	return sum;
+}
+
 DiceManager::~DiceManager(void)
 {
 	delete[] dropped;

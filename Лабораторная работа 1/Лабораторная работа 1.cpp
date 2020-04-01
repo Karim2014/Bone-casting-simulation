@@ -45,6 +45,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				ok = false;
 				cout << "Вероятности введены ошибочно. Повторите попытку" << endl;
 			}
+			cout << endl;
 		} while (!ok);
 		dice = new Dice(faces, probs);
 	} else {
@@ -69,12 +70,13 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	//diceMgr->setDisplayFunc(display);
 	diceMgr->testDice();
-	cout << setw(15) << "Грань " << setw(18) << "кол-во выпад." << setw(15) << "Эмир. вер-сть" << setw(15) <<  "Теор. вер." << endl;
+	cout << setw(10) << "Грань " << setw(15) << "Кол-во выпад." << setw(15) << "Ожид.кол-во" << setw(15) << "Эмир. вер-сть" << setw(15) <<  "Теор. вер." << endl;
 	for (int i = 0; i < dice->getFaceCount(); i++){
-		cout << setw(13) << i+1 << setw(15) << diceMgr->getDropped(i) << setw(17) << (float) diceMgr->getEProbability(i) << setw(17) << dice->getProbability(i) << endl;
+		cout << setw(7) << i+1 << setw(12) << diceMgr->getDropped(i) << setw(17) << diceMgr->getExpectedDrop(i) << setw(17) << (float) diceMgr->getEProbability(i) << setw(17) << dice->getProbability(i) << endl;
 	}
 
 	cout << endl;
+	cout << "Критерий Пирсона (хи-квадрат): " << diceMgr->pearson() << endl;
 	delete diceMgr;
 	delete dice;
 
