@@ -6,8 +6,8 @@ DiceManager::DiceManager(Dice* dice, unsigned int testCount)
 	this->dice = dice;
 	this->testCount = testCount;
 	this->callback = nullptr;
-	this->dropped = new unsigned int[testCount];
-	for (int i = 0; i < testCount; i++)
+	this->dropped = new unsigned int[dice->getFaceCount()];
+	for (int i = 0; i < dice->getFaceCount(); i++)
 		dropped[i] = 0;
 }
 
@@ -35,7 +35,7 @@ float DiceManager::getEProbability(size_t face)
 	return (float) dropped[face] / testCount;
 }
 
-unsigned int DiceManager::getDropped(size_t face) 
+float DiceManager::getDropped(size_t face) 
 {
 	if (face >= dice->getFaceCount())
 		throw "Невозможно отобразить количество выпавших граней: выход за границы массива";

@@ -24,7 +24,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	cout << "Введите количество граней кости (2-20) [6]: ";
 	size_t faces;
 	cin >> faces;
-	if (faces < 2 && faces > 20) faces = 6;
+	if (faces < 2 || faces > 20) faces = 6;
 	cout << "Ввести вероятности граней кости? (1 - да / 2 - нет) [2]: ";
 	int inputProb;
 	cin >> inputProb;
