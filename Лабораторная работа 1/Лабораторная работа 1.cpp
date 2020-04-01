@@ -6,6 +6,7 @@
 #include "DiceManager.h"
 #include <iostream>
 #include <iomanip>
+#include <conio.h>
 
 using namespace std;
 
@@ -56,16 +57,18 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	DiceManager* diceMgr;
+	unsigned int k = 100;
 	if (mode == 2) {
-		// ручной режим
+		cout << "Введите количество бросков: ";
+		cin >> k;
 	} else {
 		// автоматом
 		srand(time(0));
-		int k = 1000 + rand() % (50000-1000);
+		k = 1000 + rand() % (50000-1000);
 		cout << "Количество бросков " << k << endl;
-		diceMgr = new DiceManager(dice, k);
 	}
 
+	diceMgr = new DiceManager(dice, k);
 	cout << "Результат работы программы представлен в таблице ниже" << endl << endl;
 
 	//diceMgr->setDisplayFunc(display);
