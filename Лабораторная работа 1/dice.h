@@ -5,6 +5,7 @@ private:
 	int* faces;
 	float* faceProbabilities;
 	float* faceProbabilitiesVector;
+	void checkDice();
 public:
 	Dice(size_t);
 	Dice(size_t, float*);
