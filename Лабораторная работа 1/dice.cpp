@@ -12,7 +12,6 @@ Dice::Dice(size_t faceCount)
 		faces[i] = i + 1;
 		faceProbabilities[i] = (float) 1 / faceCount;
 		faceProbabilitiesVector[i] = i == 0 ? 0 + faceProbabilities[i] : faceProbabilitiesVector[i-1] + faceProbabilities[i];
-		std::cout << faceProbabilitiesVector[i] << std::endl;
 	}
 }
 
@@ -26,7 +25,6 @@ Dice::Dice(size_t faceCount, float* faceProbabilities) {
 	for (int i = 0; i < faceCount; i++) {
 		faces[i] = i + 1;
 		faceProbabilitiesVector[i] = i == 0 ? 0 + faceProbabilities[i] : faceProbabilitiesVector[i-1] + faceProbabilities[i];
-		std::cout << faceProbabilitiesVector[i] << std::endl;
 	}
 }
 
