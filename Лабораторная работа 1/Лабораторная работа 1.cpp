@@ -15,16 +15,63 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	setlocale(LC_ALL, "Rus");
 
-	float* p = new float[4]; 
-	p[0] = 0.2; p[1] = 0.0; p[2] = 0.3; p[3] = 0.4; //p[4] = 0.0; p[5] = 0.0;
-	Dice* dice = new Dice(6);
-	DiceManager* diceMgr = new DiceManager(dice, 5000);
+	cout << "Лабораторная работа №1. Выполнил Сабитов К.А. ИСзск-19 ИИТЗО" << endl;
+	cout << "Программа имитирует бросание игральной кости с учетом различных форм и несимметричных граней. Работает в двух режимах - ручном и автоматическом." << endl << endl;
+	cout << "Выберите режим бросков (1 - автоматический / 2 - ручной) [1]: ";
+	int mode;
+	cin >> mode;
+	cout << "Введите количество граней кости (2-20) [6]: ";
+	size_t faces;
+	cin >> faces;
+	if (faces < 2 && faces > 20) faces = 6;
+	cout << "Ввести вероятности граней кости? (1 - да / 2 - нет) [2]: ";
+	int inputProb;
+	cin >> inputProb;
+	Dice* dice;
+	if (inputProb == 1) {
+		cout << "Введите вероятности выпадения каждой грани" << endl;
+		float* probs = new float[faces];
+		bool ok;
+		do {
+			ok = true;
+			for (int i = 0; i < faces; i++) {
+				cin >> probs[i];
+			}
+			float sum = 0;
+			for (int i = 0; i < faces-1; i++) {
+				sum += probs[i];
+			}
+			if (sum >= 1) {
+				ok = false;
+				cout << "Вероятности введены ошибочно. Повторите попытку" << endl;
+			}
+		} while (!ok);
+		dice = new Dice(faces, probs);
+	} else {
+		cout << endl;
+		cout << "Кость сформирована с симетричными гранями" << endl;
+		dice = new Dice(faces);
+		cout << "Теоретические вероятности выпадения каждой грани " << (float) 1 / faces << endl;
+	}
+
+	DiceManager* diceMgr;
+	if (mode == 2) {
+		// ручной режим
+	} else {
+		// автоматом
+		srand(time(0));
+		int k = 1000 + rand() % (50000-1000);
+		cout << "Количество бросков " << k << endl;
+		diceMgr = new DiceManager(dice, k);
+	}
+
+	cout << "Результат работы программы представлен в таблице ниже" << endl << endl;
 
 	//diceMgr->setDisplayFunc(display);
 	diceMgr->testDice();
-	cout << setw(15) << "Грань " << setw(18) << "кол-во выпад." << setw(15) << "Эмир. вер-сть" << endl;
+	cout << setw(15) << "Грань " << setw(18) << "кол-во выпад." << setw(15) << "Эмир. вер-сть" << setw(15) <<  "Теор. вер." << endl;
 	for (int i = 0; i < dice->getFaceCount(); i++){
-		cout << setw(13) << i+1 << setw(15) << diceMgr->getDropped(i) << setw(17) << (float) diceMgr->getEProbability(i) << endl;
+		cout << setw(13) << i+1 << setw(15) << diceMgr->getDropped(i) << setw(17) << (float) diceMgr->getEProbability(i) << setw(17) << dice->getProbability(i) << endl;
 	}
 
 	cout << endl;
